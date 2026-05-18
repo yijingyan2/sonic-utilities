@@ -31,6 +31,7 @@ class TestRexecInterfacesStatus(object):
         pass
 
     @mock.patch("show.interfaces.device_info.is_supervisor", mock.MagicMock(return_value=True))
+    @mock.patch("show.interfaces.sys.stdin.isatty", mock.MagicMock(return_value=True))
     @mock.patch("sys.argv", ["show", "interfaces", "status"])
     def test_show_interfaces_status_rexec(self):
         import show.main as show
@@ -45,6 +46,7 @@ class TestRexecInterfacesStatus(object):
         assert MULTI_LC_REXEC_OUTPUT == result.output
 
     @mock.patch("show.interfaces.device_info.is_supervisor", mock.MagicMock(return_value=True))
+    @mock.patch("show.interfaces.sys.stdin.isatty", mock.MagicMock(return_value=True))
     @mock.patch("sys.argv", ["show", "interfaces", "status"])
     def test_show_interfaces_status_error_rexec(self):
         import show.main as show

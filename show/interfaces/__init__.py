@@ -149,7 +149,7 @@ def naming_mode(verbose):
 def status(interfacename, namespace, display, verbose):
     """Show Interface status information"""
 
-    if device_info.is_supervisor():
+    if device_info.is_supervisor() and sys.stdin.isatty():
         # the command will be executed directly by rexec
         click.echo("Since the current device is a chassis supervisor, "
                    "this command will be executed remotely on all linecards")
